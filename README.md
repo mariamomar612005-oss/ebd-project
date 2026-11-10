@@ -10,7 +10,7 @@
 |---|---|---|---|
 | Mazen Nabil | 16001775 | T7 | mzenabill |
 | Mariam Omar | 16001360 | T7 | mariamomar612005-oss |
-| Ahmed Eisa | 16002635 | T8 | ahmedeissa077 |
+| Ahmed Eissa | 16002635 | T8 | ahmedeissa077 |
 | Noreen Shams | 16004500 | T8 | noreenshams4-dotcom |
 | Jamila Waleed | 16004555 | T8 | jamilacoder |
 | Laila El Sherif | 16008387 | T8 | lailaelsherif2006 |
@@ -50,7 +50,7 @@ PadelMatch is a web application designed to simplify sports court reservations a
 | Noreen Shams | 3. Open match creation |
 | Mariam Omar | 4. Match join & slot reservation |
 | Mazen Nabil | 5. Venue schedule & pricing management |
-| Ahmed Eisa | 6. Post-match score logging & ratings |
+| Ahmed Eissa | 6. Post-match score logging & ratings |
 
 ## 5. Data Model
 
@@ -124,8 +124,6 @@ module.exports = mongoose.model('Review', reviewSchema);
 
 ## 6. Run it locally
 
-> Leave this section as it is until Submission 2 (Thursday 10 December 2026,
-> 23:59). Then fill it in: we follow these steps to run your project.
 
 ### Back end
 
