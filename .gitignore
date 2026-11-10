@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Environment variables (NEVER commit secrets!)
+.env
+.env.local
+
+# Logs & OS junk
+*.log
+.DS_Store
+dist/
+build/
