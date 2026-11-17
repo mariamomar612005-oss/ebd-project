@@ -10,7 +10,7 @@
 |---|---|---|---|
 | Mazen Nabil | 16001775 | T7 | mzenabill |
 | Mariam Omar | 16001360 | T7 | mariamomar612005-oss |
-| Ahmed Eissa | 16002635 | T8 | ahmedeissa077 |
+| Ahmed Eisa | 16002635 | T8 | ahmedeissa077 |
 | Noreen Shams | 16004500 | T8 | noreenshams4-dotcom |
 | Jamila Waleed | 16004555 | T8 | jamilacoder |
 | Laila El Sherif | 16008387 | T8 | lailaelsherif2006 |
@@ -24,7 +24,7 @@ PadelMatch is a web application designed to simplify sports court reservations a
 ### 3.1 The full product
 
 - Real-time push notifications for match invites and booking confirmations
-- Integrated online payment gateway 
+- Integrated online payment gateway
 - Interactive venue mapping and geolocation court search
 - Automated player leaderboard and skill rating algorithms
 - Tournament creation, automated bracket generation, and league management
@@ -50,27 +50,25 @@ PadelMatch is a web application designed to simplify sports court reservations a
 | Noreen Shams | 3. Open match creation |
 | Mariam Omar | 4. Match join & slot reservation |
 | Mazen Nabil | 5. Venue schedule & pricing management |
-| Ahmed Eissa | 6. Post-match score logging & ratings |
+| Ahmed Eisa | 6. Post-match score logging & ratings |
 
-## 5. Data Model
+## 5. Data model
 
-```javascript
-// models/User.js
-const mongoose = require('mongoose');
+### User
 
+```js
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }, // bcrypt hashed
+  password: { type: String, required: true }, // stored hashed, never as plain text
   role: { type: String, enum: ['player', 'owner'], default: 'player' },
   skillRating: { type: Number, default: 3.0 }
 }, { timestamps: true });
+```
 
-module.exports = mongoose.model('User', userSchema);
+### Court
 
-// models/Court.js
-const mongoose = require('mongoose');
-
+```js
 const courtSchema = new mongoose.Schema({
   name: { type: String, required: true },
   venueName: { type: String, required: true },
@@ -78,12 +76,11 @@ const courtSchema = new mongoose.Schema({
   isIndoor: { type: Boolean, default: false },
   maintenanceSlots: [{ date: String, timeSlot: String }]
 }, { timestamps: true });
+```
 
-module.exports = mongoose.model('Court', courtSchema);
+### Booking
 
-// models/Booking.js
-const mongoose = require('mongoose');
-
+```js
 const bookingSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   courtId: { type: mongoose.Schema.Types.ObjectId, ref: 'Court', required: true },
@@ -91,12 +88,11 @@ const bookingSchema = new mongoose.Schema({
   timeSlot: { type: String, required: true }, // e.g. "18:00-19:30"
   totalAmount: { type: Number, required: true }
 }, { timestamps: true });
+```
 
-module.exports = mongoose.model('Booking', bookingSchema);
+### Match
 
-// models/Match.js
-const mongoose = require('mongoose');
-
+```js
 const matchSchema = new mongoose.Schema({
   hostId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   bookingId: { type: mongoose.Schema.Types.ObjectId, ref: 'Booking', required: true },
@@ -106,24 +102,21 @@ const matchSchema = new mongoose.Schema({
   costPerPlayer: { type: Number, required: true },
   isFull: { type: Boolean, default: false }
 }, { timestamps: true });
+```
 
-module.exports = mongoose.model('Match', matchSchema);
+### Review
 
-// models/Review.js
-const mongoose = require('mongoose');
-
+```js
 const reviewSchema = new mongoose.Schema({
   reviewerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   targetUserId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   rating: { type: Number, min: 1, max: 5, required: true },
-  scoreLogged: { type: String }, 
+  scoreLogged: { type: String },
   comment: { type: String }
 }, { timestamps: true });
-
-module.exports = mongoose.model('Review', reviewSchema);
+```
 
 ## 6. Run it locally
-
 
 ### Back end
 
