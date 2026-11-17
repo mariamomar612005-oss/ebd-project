@@ -17,6 +17,7 @@ export default function Header() {
       {user ? (
         <>
           <Link to="/home">Home</Link>
+          <Link to="/ratings">Ratings</Link>
           <span>Hi, {user.name}</span>
           <button onClick={handleLogout}>Log out</button>
         </>
