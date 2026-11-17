@@ -9,6 +9,7 @@ app.use(express.json());
 
 app.get('/api/health', (req, res) => res.status(200).json({ status: 'ok' }));
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/reviews', require('./routes/reviewRoutes'));
 
 const PORT = 3000;
 connectDB().then(() => {
