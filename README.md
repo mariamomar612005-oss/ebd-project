@@ -144,3 +144,6 @@ npm run dev
 ```
 
 The app runs on [the address `npm run dev` prints, e.g. http://localhost:5173].
+## Initial Contribution
+
+Jamila Waleed - Direct Court Booking (Use Case 2).
